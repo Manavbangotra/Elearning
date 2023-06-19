@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Comaptible" content="IE=edge">
+	<title>LearnEd</title>
+	<meta name="desciption" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+  			if($(window).scrollTop()){
+  			  $('nav').addClass('black');
+ 			 }else {
+ 		   $('nav').removeClass('black');
+ 		 }
+		})
+	</script>
+    <title>E-Learning Platform Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+            background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5)),url("images/extra/svg1.jpg");
+        }
+        .form-survey{
+            align-items: center;
+            margin: 350px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            margin: auto;
+            width: 80%;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        select {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            margin: auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>E-Learning Platform Survey</h1>
+    <nav>
+		<div class="logo"><img src="images/icon/logo.png" alt="logo"></div>
+		<ul>
+			<li><a class="active" href="survey.html">Survery Page</a></li>
+		</ul>
+		<a class="get-started" href="login.html">Get Started</a>
+	</nav>
+    <div class="form-survey">
+        <form action="submit_survey.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" width=300px required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" width=300px required>
+    
+            <label for="institution">Institution Name:</label>
+            <input type="text" id="institution" name="institution" width=300px required>
+    
+            <label for="qualification">Highest Qualification:</label>
+            <input type="text" id="qualification" name="qualification" width=300px required>
+    
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" width=300px required>
+    
+            <label for="experience">Years of Experience:</label>
+            <input type="number" id="experience" name="experience" width=300px required>
+    
+            <label for="satisfaction">Overall satisfaction with the platform:</label>
+            <select id="satisfaction" name="satisfaction" required>
+                <option value="">-- Select One --</option>
+                <option value="very-satisfied">Very Satisfied</option>
+                <option value="satisfied">Satisfied</option>
+                <option value="neutral">Neutral</option>
+                <option value="unsatisfied">Unsatisfied</option>
+                <option value="very-unsatisfied">Very Unsatisfied</option>
+            </select>
+    
+            <label for="interest">Areas of Interest (select multiple):</label>
+            <select id="interest" name="interest[]" multiple required>
+                <option value="programming">Programming</option>
+                <option value="data-science">Data Science</option>
+                <option value="design">Design</option>
+                <option value="business">Business</option>
+                <option value="language">Language Learning</option>
+            </select>
+    
+            <label for="feedback">Additional Comments:</label>
+            <textarea id="feedback" name="feedback"></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+</body>
+</html>

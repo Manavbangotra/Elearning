@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<title>LearnEd</title>
+	<meta name="desciption" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+  			if($(window).scrollTop()){
+  			  $('nav').addClass('black');
+ 			 }else {
+ 		   $('nav').removeClass('black');
+ 		 }
+		})
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="images/icon/logo.png" alt="logo"></div>
+        <ul>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="contactUS.html">Contact Us</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+        <div class="srch"><input type="text" class="search" placeholder="Search here..."><img src="images/icon/search.png" alt="search" onclick=slide()></div>
+        <a class="get-started" href="login.html">Get Started</a>
+    </nav>
+    <div class="diffSection" id="contactus_section">
+		<center><p style="font-size: 50px; padding: 100px">Contact Us</p></center>
+		<div class="csec"></div>
+		<div class="back-contact">
+			<div class="cc">
+			<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+				<label>First Name <span class="imp">*</span></label><label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
+				<center>
+				<input type="text" name="" style="margin-right: 10px; width: 175px" required="required"><input type="text" name="lname" style="width: 175px" required="required"><br>
+				</center>
+				<label>Email <span class="imp">*</span></label><br>
+				<input type="email" name="mail" style="width: 100%" required="required"><br>
+				<label>Message <span class="imp">*</span></label><br>
+				<input type="text" name="message" style="width: 100%" required="required"><br>
+				<label>Additional Details</label><br>
+				<textarea name="addtional"></textarea><br>
+				<button type="submit" id="csubmit">Send Message</button>
+			</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
