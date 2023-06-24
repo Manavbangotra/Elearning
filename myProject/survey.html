@@ -18,6 +18,69 @@
  		   $('nav').removeClass('black');
  		 }
 		})
+        function clearErrors(){
+
+            errors = document.getElementsByClassName('formerror');
+            for(let item of errors)
+            {
+                item.innerHTML = "";
+            }
+
+
+            }
+            function seterror(id, error){
+            //sets error inside tag of id 
+            element = document.getElementById(id);
+            element.getElementsByClassName('formerror')[0].innerHTML = error;
+
+        }
+
+        function validateForm(){
+            var returnval = true;
+            clearErrors();
+
+            //perform validation and if validation fails, set the value of returnval to false
+            var name = document.forms['myForm']["fname"].value;
+            if (name.length<5){
+                seterror("name", "*Length of name is too short");
+                returnval = false;
+            }
+
+            if (name.length == 0){
+                seterror("name", "*Length of name cannot be zero!");
+                returnval = false;
+            }
+
+            var email = document.forms['myForm']["femail"].value;
+            if (email.length>15){
+                seterror("email", "*Email length is too long");
+                returnval = false;
+            }
+
+            var phone = document.forms['myForm']["fphone"].value;
+            if (phone.length != 10){
+                seterror("phone", "*Phone number should be of 10 digits!");
+                returnval = false;
+            }
+
+            var password = document.forms['myForm']["fpass"].value;
+            if (password.length < 6){
+
+                // Quiz: create a logic to allow only those passwords which contain atleast one letter, one number and one special character and one uppercase letter
+                seterror("pass", "*Password should be atleast 6 characters long!");
+                returnval = false;
+            }
+
+            var cpassword = document.forms['myForm']["fcpass"].value;
+            if (cpassword != password){
+                seterror("cpass", "*Password and Confirm password should match!");
+                returnval = false;
+            }
+
+            return returnval;
+        }
+
+
 	</script>
     <title>E-Learning Platform Survey</title>
     <style>
@@ -26,6 +89,9 @@
             margin: 20px;
             background-color: #f2f2f2;
             background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5)),url("images/extra/svg1.jpg");
+        }
+        nav{
+            width:100%;
         }
         .form-survey{
             align-items: center;
@@ -80,6 +146,37 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        
+        body {
+            padding: 10px 50px;
+        }
+
+        .formdesign {
+            font-size: 20px;
+
+        }
+
+        .formdesign input {
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .formerror {
+            color: red;
+        }
+
+        .but {
+            border-radius: 9px;
+            width: 100px;
+            height: 50px;
+            font-size: 15px;
+            margin: 22px 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -92,25 +189,27 @@
 		<a class="get-started" href="login.html">Get Started</a>
 	</nav>
     <div class="form-survey">
-        <form action="submit_survey.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" width=300px required>
+        <form aciton ="/myaction.php" name="myForm" onsubmit="return validateForm()" method="post">
+            <div class="formdesign" id="name">
+                Name: <input type="text" name="fname" required><b><span class="formerror"> </span></b>
+            </div>
     
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" width=300px required>
+            <div class="formdesign" id="email">
+                Email: <input type="email" name="femail" required><b><span class="formerror"> </span></b>
+            </div>
     
-            <label for="institution">Institution Name:</label>
-            <input type="text" id="institution" name="institution" width=300px required>
+            <div class="formdesign" id="phone">
+                Phone: <input type="phone" name="fphone" required><b><span class="formerror"></span></b>
+            </div>
     
-            <label for="qualification">Highest Qualification:</label>
-            <input type="text" id="qualification" name="qualification" width=300px required>
+            <div class="formdesign" id="pass">
+                Password: <input type="password" name="fpass" required><b><span class="formerror"></span></b>
+            </div>
     
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" width=300px required>
-    
-            <label for="experience">Years of Experience:</label>
-            <input type="number" id="experience" name="experience" width=300px required>
-    
+            <div class="formdesign" id="cpass">
+                Confirm Password: <input type="password" name="fcpass" required><b><span class="formerror"></span></b>
+            </div>
+
             <label for="satisfaction">Overall satisfaction with the platform:</label>
             <select id="satisfaction" name="satisfaction" required>
                 <option value="">-- Select One --</option>
@@ -133,9 +232,8 @@
             <label for="feedback">Additional Comments:</label>
             <textarea id="feedback" name="feedback"></textarea>
             <br>
-            <input type="submit" value="Submit">
+            <input class="but" type="submit" value="Submit">
         </form>
     </div>
-    
 </body>
 </html>
